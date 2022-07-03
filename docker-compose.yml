@@ -11,3 +11,16 @@ services:
       - type: bind
         source: .
         target: /api
+
+  db:
+    image: postgres:14
+    container_name: postgres
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
